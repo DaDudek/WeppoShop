@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/DaDudek/WeppoShop/issues"
   },
-  "homepage": "https://github.com/DaDudek/WeppoShop#readme"
+  "homepage": "https://github.com/DaDudek/WeppoShop#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "http": "0.0.1-security"
+  }
 }
