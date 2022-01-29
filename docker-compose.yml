@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - APP_DB_NAME=wepposhop
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - '9001:5432'
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
