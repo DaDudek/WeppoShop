@@ -20,6 +20,6 @@ const Product =
         price: {
             allowNull: false,
             type: Sequelize.FLOAT
-        },
+        }
     });
 export {Product};
