@@ -6,39 +6,53 @@ import {Product} from "../model/Product.js";
 import {Role} from "../model/Role.js";
 import {User} from "../model/User.js";
 
-async function test_table(){
-    const PRODUCT_EXAMPLE = {
-        name: "example",
-        description: "example",
-        price: 2.5
-    };
-    Product.create(PRODUCT_EXAMPLE);
+async function test_table(req, res){
+    try{
+        const ORDER_MODEL = {
+            price: 5.0,
+            address: "Example",
+            status: "example",
+        }
 
-    const ROLE_EXAMPLE = {
-        name: "example"
-    };
-    Role.create(ROLE_EXAMPLE);
+        const PRODUCT_EXAMPLE = {
+            name: "example",
+            description: "example",
+            price: 2.5
+        };
+        const order = await Order.create(ORDER_MODEL)
+        PRODUCT_EXAMPLE.orderId = order.id;
+        await Product.create(PRODUCT_EXAMPLE);
 
-    const USER_EXAMPLE = {
-        mail: "example",
-        login: "example",
-        password: 'example'
-    };
-    User.create(USER_EXAMPLE);
+        const ROLE_EXAMPLE = {
+            name: "example"
+        };
+        await Role.create(ROLE_EXAMPLE);
+
+        const USER_EXAMPLE = {
+            mail: "example",
+            login: "example",
+            password: 'example'
+        };
+        const user = await User.create(USER_EXAMPLE);
+        return res.status(201).json(user)
+    }catch (error) {
+        return res.status(400).json(error)
+    }
+
 }
 
 async function createOne(req, res) {
     console.log('createOne: [POST] /order/')
     try {
         const ORDER_MODEL = {
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password,
+            price: req.body.price,
+            address: req.body.address,
+            status: req.body.status,
         }
         try {
-            const user = await Order.create(ORDER_MODEL)
-            console.log('OK createOne order: ', user)
-            return res.status(201).json(user)
+            const order = await Order.create(ORDER_MODEL)
+            console.log('OK createOne order: ', order)
+            return res.status(201).json(order)
         } catch (error) {
             console.log('ERROR in createOne ' + 'order:', error)
             return res.status(500).json(error)
@@ -64,4 +78,4 @@ async function getAll(req, res) {
     }
 }
 
-export {getAll, createOne}
+export {getAll, createOne, test_table}
