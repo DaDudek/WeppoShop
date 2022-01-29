@@ -2,6 +2,30 @@
  * REMOVE LATER ONLY FOR TEST
  */
 import {Order} from "../model/Order.js";
+import {Product} from "../model/Product.js";
+import {Role} from "../model/Role.js";
+import {User} from "../model/User.js";
+
+async function test_table(){
+    const PRODUCT_EXAMPLE = {
+        name: "example",
+        description: "example",
+        price: 2.5
+    };
+    Product.create(PRODUCT_EXAMPLE);
+
+    const ROLE_EXAMPLE = {
+        name: "example"
+    };
+    Role.create(ROLE_EXAMPLE);
+
+    const USER_EXAMPLE = {
+        mail: "example",
+        login: "example",
+        password: 'example'
+    };
+    User.create(USER_EXAMPLE);
+}
 
 async function createOne(req, res) {
     console.log('createOne: [POST] /order/')
