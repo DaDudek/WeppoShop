@@ -1,25 +1,25 @@
-const { DataTypes } = require('sequelize');
-
-module.exports = (sequelize) => {
+import * as Sequelize from 'sequelize'
+import {sequelizeInstance} from "../database/db.js";
+const Order =
     //user and products are needed to be add be relationships later
-    sequelize.define('order', {
+    sequelizeInstance.define('order', {
         id: {
             allowNull: false,
             autoIncrement: true,
             primaryKey: true,
-            type: DataTypes.INTEGER
+            type: Sequelize.INTEGER
         },
         price: {
             allowNull: false,
-            type: DataTypes.FLOAT
+            type: Sequelize.FLOAT
         },
         address: {
             allowNull: false,
-            type: DataTypes.STRING
+            type: Sequelize.STRING
         },
         status: {
             allowNull: false,
-            type: DataTypes.STRING
+            type: Sequelize.STRING
         }
     });
-};
+export {Order};
