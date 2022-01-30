@@ -9,7 +9,7 @@ import {User} from "../model/User.js";
 async function test_table(req, res){
     try{
         const ORDER_MODEL = {
-            price: 5.0,
+            price: 5.034423,
             address: "Example",
             status: "example",
         }

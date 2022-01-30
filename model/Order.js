@@ -11,7 +11,7 @@ const Order =
         },
         price: {
             allowNull: false,
-            type: Sequelize.FLOAT
+            type: Sequelize.DECIMAL(10, 2)
         },
         address: {
             allowNull: false,
