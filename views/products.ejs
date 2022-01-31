@@ -1,0 +1,6 @@
+<%- include('navbar',{}) %>
+<div>
+    <% products.forEach(function (product) { %>
+        <%- include('product', product) %>
+    <% });%>
+</div>

@@ -7,14 +7,17 @@ class ProductRepository{
     }
 
     async getAll(){
-        return await Product.findAll();
+        return await Product.findAll({
+            raw: true
+        });
     }
 
     async getById(productId){
         return await Product.findAll({
             where: {
                 id: productId
-            }
+            },
+            raw: true
         })
     }
 
