@@ -1,7 +1,6 @@
 import * as Sequelize from 'sequelize'
 import {sequelizeInstance} from "../database/db.js";
 const Order =
-    //user and products are needed to be add be relationships later
     sequelizeInstance.define('order', {
         id: {
             allowNull: false,
