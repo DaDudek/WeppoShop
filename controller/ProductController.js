@@ -1,6 +1,5 @@
 import {ProductRepository} from "../repository/ProductRepository.js";
 
-
 class ProductController{
 
     productRepository = new ProductRepository();
@@ -24,19 +23,20 @@ class ProductController{
     async getAll(req, res){
         try{
             const products = await this.productRepository.getAll();
-            return res.status(201).json(products);
+            // return res.status(201).json(products);
+            console.log(products)
+            return res.render('products',{'products': products});
         }catch (error) {
             console.log("exception:ProductController.getAll");
             return res.status(400).json(error)
         }
-
     }
 
     async getById(req, res){
         try{
             const productId = req.params.id;
             const product = await this.productRepository.getById(productId)
-            return res.status(201).json(product);
+            return res.status(201).json(product[0]);
         }catch (error) {
             console.log("exception: ProductController.getById");
             return res.status(400).json(error)

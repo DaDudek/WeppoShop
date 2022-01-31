@@ -7,16 +7,25 @@ import bodyParser from 'body-parser';
 import {UserController} from "./controller/UserController.js"
 import {ProductController} from "./controller/ProductController.js";
 import {OrderController} from "./controller/OrderController.js";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 let app = express();
 
 let server = http.createServer(app);
+let userController = new UserController();
+let productController = new ProductController();
+let orderController = new OrderController();
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
+app.use(express.static(__dirname + "/assets"));
 
 //
 // app.use( (req, res) => {
@@ -36,28 +45,23 @@ app.get('/init', (req, res) => {
 
 // USER
 app.get('/user', (req, res) => {
-    const userController = new UserController();
     userController.getAll(req, res);
 })
 
 app.post('/user', (req, res) => {
-    const userController = new UserController();
     userController.create(req, res);
 })
 
 app.delete('/user/:id', (req, res) => {
-    const userController = new UserController();
     userController.remove(req, res);
 })
 
 app.get('/user/:id', (req, res) => {
-    const userController = new UserController();
     userController.getById(req, res);
 })
 
 //PRODUCT
 app.get('/product', (req, res) => {
-    const productController = new ProductController();
     if (req.query.name){
         return productController.getByName(req, res);
     }
@@ -68,42 +72,42 @@ app.get('/product', (req, res) => {
 })
 
 app.post('/product', (req, res) => {
-    const productController = new ProductController();
     productController.create(req, res);
 })
 
 app.delete('/product/:id', (req, res) => {
-    const productController = new ProductController();
     productController.remove(req, res);
 })
 
 app.get('/product/:id', (req, res) => {
-    const productController = new ProductController();
     productController.getById(req, res);
 })
 
 
 //ORDER
 app.get('/order', (req, res) => {
-    const orderController = new OrderController();
     orderController.getAll(req, res);
 })
 
 app.post('/order', (req, res) => {
-    const orderController = new OrderController();
     orderController.create(req, res);
 })
 
 app.delete('/order/:id', (req, res) => {
-    const orderController = new OrderController();
     orderController.remove(req, res);
 })
 
 app.get('/order/:id', (req, res) => {
-    const orderController = new OrderController();
     orderController.getById(req, res);
 })
 
+
+app.get('/view/product', (req, res) => {
+    const products = productController.getAll(req, res)
+        .then(res => console.log(res.json()));
+    // console.log(products);
+    //res.render('product', products);
+})
 
 const start = async () => {
     try {
