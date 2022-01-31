@@ -55,7 +55,7 @@ class UserController{
             user.password = password;
             await this.userRepository.update(user);
         }catch (error) {
-            console.log("exception: OrderController.getById");
+            console.log("exception: UserController.update");
             return res.status(400).json(error)
         }
     }
@@ -66,7 +66,7 @@ class UserController{
             const numberOfRemoved = this.userRepository(userId);
             return res.status(201).json(numberOfRemoved);
         }catch (error) {
-            console.log("exception: UserController.getById");
+            console.log("exception: UserController.remove");
             return res.status(400).json(error)
         }
     }

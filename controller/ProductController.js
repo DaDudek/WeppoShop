@@ -1,6 +1,5 @@
 import {ProductRepository} from "../repository/ProductRepository.js";
-import {Product} from "../model/Product.js";
-import * as Sequelize from "sequelize";
+
 
 class ProductController{
 
@@ -54,7 +53,7 @@ class ProductController{
             product.price = req.body.price;
             await this.productRepository.update(product);
         }catch (error) {
-            console.log("exception: OrderController.getById");
+            console.log("exception: ProductController.update");
             return res.status(400).json(error)
         }
     }
@@ -65,7 +64,7 @@ class ProductController{
             const numberOfRemoved = await this.productRepository.remove(productId);
             return res.status(201).json(numberOfRemoved);
         }catch (error) {
-            console.log("exception: ProductController.getById");
+            console.log("exception: ProductController.remove");
             return res.status(400).json(error)
         }
     }
@@ -76,7 +75,7 @@ class ProductController{
             const products = await this.productRepository.getByName(productName);
             return res.status(201).json(products)
         }catch (error) {
-            console.log("exception: ProductController.getById");
+            console.log("exception: ProductController.getByName");
             return res.status(400).json(error)
         }
 
@@ -88,7 +87,7 @@ class ProductController{
             const products = await this.productRepository.getByDescription(productDescription);
             return res.status(201).json(products)
         }catch (error) {
-            console.log("exception: ProductController.getById");
+            console.log("exception: ProductController.getByDescription");
             return res.status(400).json(error)
         }
     }

@@ -52,7 +52,7 @@ class OrderController{
             order.price = req.body.price;
             await this.orderRepository.update(order);
         }catch (error) {
-            console.log("exception: OrderController.getById");
+            console.log("exception: OrderController.update");
             return res.status(400).json(error)
         }
     }
@@ -64,7 +64,7 @@ class OrderController{
             const numberOfRemoved = this.orderRepository.remove(orderId);
             return res.status(201).json(numberOfRemoved);
         }catch (error) {
-            console.log("exception: OrderController.getById");
+            console.log("exception: OrderController.remove");
             return res.status(400).json(error)
         }
     }

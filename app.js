@@ -84,17 +84,6 @@ app.get('/product/:id', (req, res) => {
 
 
 //ORDER
-app.delete('/user/:id', (req, res) => {
-    const userController = new UserController();
-    userController.remove(req, res);
-})
-
-app.get('/user/:id', (req, res) => {
-    const userController = new UserController();
-    userController.getById(req, res);
-})
-
-//PRODUCT
 app.get('/order', (req, res) => {
     const orderController = new OrderController();
     orderController.getAll(req, res);
