@@ -25,7 +25,8 @@ class ProductController{
             const products = await this.productRepository.getAll();
             // return res.status(201).json(products);
             console.log(products)
-            return res.render('products',{'products': products});
+            // TODO: temp fix
+            return res.render('index',{'products': products});
         }catch (error) {
             console.log("exception:ProductController.getAll");
             return res.status(400).json(error)

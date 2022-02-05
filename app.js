@@ -13,12 +13,12 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-let app = express();
+const app = express();
 
-let server = http.createServer(app);
-let userController = new UserController();
-let productController = new ProductController();
-let orderController = new OrderController();
+const server = http.createServer(app);
+const userController = new UserController();
+const productController = new ProductController();
+const orderController = new OrderController();
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -27,10 +27,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.raw());
 app.use(express.static(__dirname + "/assets"));
 
-//
-// app.use( (req, res) => {
-//     res.render('index', {username: 'foo'});
-// });
+/*
+app.use((req, res) => {
+    //res.render('index');
+});
+*/
+
+app.get('/', (req, res) => {
+    // this doesn't work
+    // let products = productController.getAll(req, res);
+    // temp workaround
+    const products = productController.getAll(req, res);
+});
 
 initRelations();
 

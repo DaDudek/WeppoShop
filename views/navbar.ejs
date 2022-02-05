@@ -1,21 +1,26 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-large navbar-dark bg-secondary m-0">
     <a class="navbar-brand" href="#">WeppoShop</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0">
+    <div id="shopping-cart" class="ml-auto mr-2">
+        0.00zł
+        <a href="#"><img src="/shopping_cart.png" alt="" width="35" height="35" class="d-inline"></a>
+    </div>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <form class="form-inline mr-2">
 <!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
 <!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-            <div class="input-group mb-3">
+            <div class="input-group">
                 <input type="text" class="form-control">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Button</button>
+                    <button class="btn btn-success" type="submit">Szukaj</button>
                 </div>
             </div>
-
         </form>
     </div>
 </nav>

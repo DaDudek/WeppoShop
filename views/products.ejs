@@ -1,6 +1,14 @@
-<%- include('navbar',{}) %>
-<div>
-    <% products.forEach(function (product) { %>
-        <%- include('product', product) %>
-    <% });%>
+<div class="container py-5">
+    
+    <h2 class="display-4 text-center">Produkty</h2>
+
+    <div class="container px-4 px-lg-5 mt-5 d-flex justify-content-center">
+        <div class="row">
+        <% products.forEach(function (product) { %>
+            <div class="col-md-4 mt-2">
+                <%- include('product', product) %>
+            </div>
+        <% });%>]
+        </div>
+    </div>
 </div>
